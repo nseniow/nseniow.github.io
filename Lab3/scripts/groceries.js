@@ -8,70 +8,80 @@ var products = [
 		lactose: false,
 		nutFree: true,
 		price: 1.99,
-		organic: false
+		organic: false,
+		image: '/images/yogurt.jpg'
 	},
 	{
-		name: "Almond Granola",
+		name: "Organic Almond Granola",
 		lactose: true,
 		nutFree: false,
 		price: 2.35,
-		organic: true
+		organic: true,
+		image: '/images/almondgranola.jpg'
 	},
 	{
-		name: "Salmon",
+		name: "Organic Salmon",
 		lactose: true,
 		nutFree: true,
 		price: 10.00,
-		organic: true
+		organic: true,
+		image: '/images/salmon.jpg'
 	},
 	{
 		name: "French Fries",
 		lactose: true,
 		nutFree: true,
 		price: 3.99,
-		organic: false
+		organic: false,
+		image: '/images/frenchfries.jpg'
 	},
 	{
-		name: "Vanilla Ice Cream",
+		name: "Organic Vanilla Ice Cream",
 		lactose: false,
 		nutFree: true,
 		price: 6.99,
-		organic: true
+		organic: true,
+		image: '/images/vanillaicecream.jpg'
 	},
 	{
 		name: "Almond Ice Cream",
 		lactose: false,
 		nutFree: false,
 		price: 6.99,
-		organic: false
+		organic: false,
+		image: '/images/almondicecream.jpg'
 	},
 	{
-		name: "Milk",
+		name: "Organic Milk",
 		lactose: false,
 		nutFree: true,
 		price: 1.99,
-		organic: true
+		organic: true,
+		image: '/images/milk.jpg'
 	},
 	{
-		name: "Bread",
+		name: "Organic Bread",
 		lactose: true,
 		nutFree: true,
 		price: 1.49,
-		organic: true
+		organic: true,
+		image: '/images/bread.jpg'
 	},
 	{
-		name: "Eggs",
+		name: "Organic Eggs",
 		lactose: true,
 		nutFree: true,
 		price: 2.99,
-		organic: true
+		organic: true,
+		image: '/images/eggs.jpg'
 	},
 	{
 		name: "Peanut Butter",
 		lactose: true,
 		nutFree: false,
 		price: 6.99,
-		organic: false
+		organic: false,
+		image: '/images/peanutbutter.jpg'
 	}
 
 ];
@@ -82,7 +92,7 @@ var products = [
 // prices should be included in this list, as well as a sort based on price
 
 function restrictListProducts(prods, lactose, nut, organic) {
-	let product_names = [];
+	let products = [];
 
 	prods.sort(function(a, b){
 			return a.price - b.price;
@@ -92,22 +102,17 @@ function restrictListProducts(prods, lactose, nut, organic) {
 		if (lactose && !prods[i].lactose) continue;
 		if (nut && !prods[i].nutFree) continue;
 		if (organic && !prods[i].organic) continue;
-		product_names.push((prods[i].organic ? 'Organic ' : '') + prods[i].name + " - $" + prods[i].price);
-	
+		products.push(prods[i]);
+
 	}
-	return product_names;
+	return products;
 }
 
 // Calculate the total price of items, with received parameter being a list of products
 function getTotalPrice(chosenProducts) {
 	totalPrice = 0;
-	console.log(chosenProducts[1]);
-	for (let i=0; i<products.length; i+=1) {
-		for (let j=0; j<chosenProducts.length; j+=1){
-			if (chosenProducts[j].includes(products[i].name)){
-					totalPrice += products[i].price;
-			}
-		}
+	for (let i=0; i<chosenProducts.length; i+=1) {
+		totalPrice+=chosenProducts[i].price;
 	}
 	return totalPrice;
 }

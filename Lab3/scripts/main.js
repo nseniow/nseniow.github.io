@@ -44,28 +44,85 @@ function populateListProductChoices() {
 
 	for (i = 0; i < optionArray.length; i++) {
 
-		var productName = optionArray[i];
-		// create the checkbox and add in HTML DOM
-		var checkbox = document.createElement("input");
-		checkbox.type = "checkbox";
-		checkbox.name = "product";
-		checkbox.value = productName;
-		s2.appendChild(checkbox);
+		var div = document.createElement("div");
+		div.className = "product";
+
+		var img = document.createElement("img");
+		img.src = 'images/' + optionArray[i].name + '.jpg';
+		div.appendChild(img);
+
+		var productName = optionArray[i].name;
+		var productPrice = optionArray[i].price;
 
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label');
-		label.htmlFor = productName;
-		label.appendChild(document.createTextNode(productName));
-		s2.appendChild(label);
+		nameLabel = document.createElement("b");
+		nameLabel.appendChild(document.createTextNode(productName));
+		label.appendChild(nameLabel);
+		div.appendChild(label);
+
+		var price = document.createElement('label');
+		priceLabel = document.createElement("b");
+		priceLabel.appendChild(document.createTextNode("$" + productPrice));
+		price.appendChild(priceLabel);
+		div.appendChild(price);
+
+		var button = document.createElement('button');
+		button.className = "addtocartbutton";
+		button.innerHTML = "Add to cart";
+		button.addEventListener("click", addToCart.bind(null, optionArray[i]), false)
+		div.appendChild(button);
+
+		s2.appendChild(div);
 
 		// create a breakline node and add in HTML DOM
-		s2.appendChild(document.createElement("br"));
+		//s2.appendChild(document.createElement("br"));
 	}
+}
+
+var cartList = [];
+
+function addToCart(item){
+	if(cartList.includes(item)) return;
+
+	if(item != null){
+		cartList.push(item);
+	}
+
+
+	var c = document.getElementById('displayCart');
+	c.innerHTML = "";
+
+
+	// build list of selected item
+	var para = document.createElement("P");
+	para.innerHTML = "You selected : ";
+	para.appendChild(document.createElement("br"));
+	for (i = 0; i < cartList.length; i++) {
+		var button = document.createElement('button');
+		button.className = "removefromcartbutton";
+		button.innerHTML = "X";
+		button.addEventListener("click", removeFromCart.bind(null, cartList[i]), false)
+		para.appendChild(button);
+
+		para.appendChild(document.createTextNode(cartList[i].name + " - $" + cartList[i].price));
+		para.appendChild(document.createElement("br"));
+	}
+
+	c.appendChild(para);
+	c.appendChild(document.createTextNode("Total Price is $" + getTotalPrice(cartList)));
+}
+
+function removeFromCart(item){
+	removeItemFromList(cartList, item);
+
+	addToCart(null);
 }
 
 // This function is called when the "Add selected items to cart" button in clicked
 // The purpose is to build the HTML to be displayed (a Paragraph)
 // We build a paragraph to contain the list of selected items, and the total price
+
 
 function selectedItems(){
 
@@ -94,7 +151,6 @@ function selectedItems(){
 }
 
 function pickupordelivery(input){
-	var s = document.getElementById("checkout");
 	var pickup = document.getElementById("pickupOptions");
 	var delivery = document.getElementById("deliveryOptions");
 	if (input == "pickup"){
@@ -106,4 +162,12 @@ function pickupordelivery(input){
 		pickup.hidden = true;
 		delivery.hidden = false;
 	}
+}
+
+function removeItemFromList(list, item) {
+  var i = list.indexOf(item);
+  if (i > -1) {
+    list.splice(i, 1);
+  }
+  return list;
 }

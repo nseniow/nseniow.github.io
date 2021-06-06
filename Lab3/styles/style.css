@@ -7,7 +7,7 @@
   background-color: #f1f1f1;
   align-items: center;
   text-align: center;
-  width: 600px;
+  width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -21,7 +21,7 @@
   font-family: sans-serif;
   line-height: 2;
   margin-left: auto;
-  width: 602px;
+  width: 802px;
   cursor: pointer;
 }
 
@@ -44,7 +44,7 @@ h3 {
   font-family: sans-serif;
   line-height: 2;
   margin-left: auto;
-  width: 602px;
+  width: 802px;
 }
 
 .centerbutton {
@@ -52,7 +52,7 @@ h3 {
   margin-right: auto;
   font-family: sans-serif;
   line-height: 2;
-  width: 602px;
+  width: 802px;
 }
 
 /* Change background color of buttons on hover */
@@ -65,6 +65,50 @@ h3 {
   background-color: #ccc;
 }
 
+.productGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.removefromcartbutton {
+    color: red;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+img{
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+b{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 100%;
+  padding-top: 5px;
+}
+
+.addtocartbutton{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.product {
+  background-color: darkgrey;
+  padding: 5px 5px 5px 5px;
+  align-items: center;
+  border-radius: 5px;
+}
 
 /* Style the tab content */
 .tabcontent {

@@ -17,9 +17,9 @@
 	  <p>Select all that apply:</p>
 		Choose a Category:
 		<br>
-		<input type="checkbox" id="lactoseSelect" name = "lactoseSelect" onchange="populateListProductChoices()">Lactose Intolerant</input><br>
-		<input type="checkbox" id="nutSelect" name = "nutSelect" onchange="populateListProductChoices()">Nut Alergy</input><br>
-		<input type="checkbox" id="organicSelect" name = "organicSelect" onchange="populateListProductChoices()">Organic only</input><br>
+		<label><input type="checkbox" id="lactoseSelect" name = "lactoseSelect" onchange="populateListProductChoices()">Lactose Intolerant</input></label><br>
+		<label><input type="checkbox" id="nutSelect" name = "nutSelect" onchange="populateListProductChoices()">Nut Alergy</input></label><br>
+		<label><input type="checkbox" id="organicSelect" name = "organicSelect" onchange="populateListProductChoices()">Organic only</input></label><br>
 	</div>
 </div>
 
@@ -28,12 +28,9 @@
 <div class="thingamabob">
 	<div id="Products" class="tabcontent">
 	  <h3>Your targeted products</h3>
-	  <p>We preselected products based on your restrictions.</p>
+	  <p>We preselected products based on your restrictions:</p>
 		 Choose items to buy:
-		 <div id="displayProduct"></div>
-		 <button id="addCart" type="button" class="block" onclick="selectedItems()">
-			Add selected items to cart.
-		</button>
+		 <div id="displayProduct" class="productGrid"></div>
 	</div>
 </div>
 
@@ -62,7 +59,7 @@
 				<input type="text">
 			</div>
 		</div>
-		<button id="Checkout" class="block">Checkout</button>
+		<button id="Checkout" class="block">Proceed to Checkout</button>
 	</div>
 
 
