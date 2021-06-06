@@ -48,7 +48,7 @@ function populateListProductChoices() {
 		div.className = "product";
 
 		var img = document.createElement("img");
-		img.src = 'images/' + optionArray[i].name + '.jpg';
+		img.src = ('images/' + optionArray[i].name + '.jpg').toLowerCase();
 		div.appendChild(img);
 
 		var productName = optionArray[i].name;
