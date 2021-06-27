@@ -19,6 +19,7 @@ function destroyCCVMask(string) {
 }
 
 function apptAlert() {
+    document.getElementById("collapseExample").collapse = true;
     document.getElementById("serviceselect").style.borderColor = "lightgrey";
     document.getElementById("aptDate").style.borderColor = "lightgrey";
     document.getElementById("aptTime").style.borderColor = "lightgrey";
@@ -63,7 +64,7 @@ function apptAlert() {
       document.getElementById("cvv1thing").scrollIntoView();
     }else{
 
-
+      $('#bkapt').click();
       let x = document.getElementById("alert");
       //let y = document.getElementById("meeting-time").value;
       let date = document.getElementById("aptDate").value;
